@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Reg | Home</title>
+
+    <style>
+        div {
+            margin: 50px 300px;
+            background-color: gainsboro;
+            padding: 10px 20px;
+            width: 400px;
+        }
+        input {
+           height: 20px;
+        }
+        td {
+            padding: 10px 0px;
+        }
+        button {
+            height: 30px;
+            width: 80px;
+            background-color:mediumaquamarine;
+            font-size: medium;
+            margin: 10px 0px;
+        }
+        button:hover {
+            border: 2px solid black;
+        }
+        .error {
+            color:crimson;
+            margin-left: 275px;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div id="log">
+        <form action="/login" name="login" method="POST">{% csrf_token %}
+            <h1>Login:</h1>
+            <table>
+                <tr>
+                    <td>Email:</td>
+                    <td><input class="fields" type="text" name="log_email"></td>                    
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input class="fields" type="password" name="log_password"></td>
+                </tr>
+            </table>
+            <!-- <p>Email: <input class="fields" type="text" name="log_email"></p>
+            <p>Password: <input class="fields" type="password" name="log_password"></p> -->
+            <button>Login:</button>
+        </form>
+    </div>
+    <div id="reg">
+        <form action="/create" name="login" method="POST">{% csrf_token %}
+            <h1>Registration:</h1>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input class="fields" type="text" name="first_name"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input class="fields" type="text" name="last_name"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input class="fields" type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input class="fields" type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>Confirm PW:</td>
+                    <td><input class="fields" type="password" name="pw_confirm"></td>
+                </tr>
+            </table>
+            <!-- <p>First Name: <input class="fields" type="text" name="first_name"></p>
+            <p>Last Name: <input class="fields" type="text" name="last_name"></p>
+            <p>Email: <input class="fields" type="email" name="email"></p>
+            <p>Password: <input class="fields" type="password" name="password"></p>
+            <p>Confirm PW: <input class="fields" type="password" name="pw_confirm"></p> -->
+            <button>Register:</button>
+        </form>
+    </div>
+    
+</body>
+</html>
